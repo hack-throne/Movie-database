@@ -1,22 +1,21 @@
 const express=require('express');
 const app=express();
-const request=require('request');
-const bodyparser=require('body-parser');
-const {searchEngine}=require('./helperFunctions/searchEngine/searchEngine')
+const mongoose=require('mongoose')
 
-//callback for fuctions;
-const {getRoot,getMovies,getTeam,getTv,getAddmovies}=require('./helperFunctions/helperFunction')
 
+//required file
+const navbarRoutes=require('./routes/navbarRoutes')
+
+
+
+
+mongoose.connect('mongodb://localhost/test12');
 app.use(express.static(__dirname+'/public'))
-//root page
-app.route('/').get(getRoot)
-app.route('/movies').get(getMovies)
-app.route('/team').get(getTeam)
-app.route('/tv').get(getTv)
-app.route('/admin/addmovies').get(getAddmovies)
 
-//
+//Routes
+app.use(navbarRoutes)
 
+//listening or creating server
 app.listen(3000,function () {
     console.log('Done')
 })

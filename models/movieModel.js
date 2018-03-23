@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const schema={
-    Title:{type:String,unique:true},
+    Title:{type:String},
     Year:String,
     Rated:String,
     Released:String,
@@ -29,4 +29,4 @@ const schema={
 const movie=new mongoose.Schema(
  schema,{timestamp:true}
 )
-module.exports=mongoose.model(movie,'movie')
+module.exports=mongoose.model('movie',movie)
