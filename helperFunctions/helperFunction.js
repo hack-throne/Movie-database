@@ -26,18 +26,26 @@ const registerform=function (req, res) {
 }
 
 const signUp=function(req,res){
-    var newUser = new User({username: req.body.username});
-    console.log(req.body.password);
+    var newUser = new User({username: req.body.username,name:req.body.name});
+    
     User.register(newUser,req.body.password,function(err,user){
         if(err){
             console.log(err);
             return res.render('register.ejs');
         } 
         passport.authenticate("local")(req,res,function(){
-            alert("user created");
+            console.log(req.body.password);
+            res.send("New user created");
         });
     });
 
 }
 
-module.exports={getRoot,getMovies,getTeam,getTv,getAddmovies,registerform,signUp}
+const login = function(req,res){
+    res.render('login.ejs');
+}
+const loginpost = function(req,res){
+    
+}
+
+module.exports={getRoot,getMovies,getTeam,getTv,getAddmovies,registerform,signUp,login,loginpost}

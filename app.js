@@ -14,7 +14,7 @@ const navbarRoutes=require('./routes/navbarRoutes')
 
 
 
-mongoose.connect('mongodb://localhost/test12');
+mongoose.connect('mongodb://localhost/test15');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname+'/public'))

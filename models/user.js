@@ -6,10 +6,7 @@ var userSchema = new mongoose.Schema({
         type:String,
         required: "Username cannot be empty"
     },
-    password: {
-        type: String,
-        required: "Password cannot be empty"
-    },
+    password:String,
     created_date:{
         type: Date,
         default: Date.now
