@@ -1,4 +1,6 @@
 const movie=require('../models/movieModel')
+const User = require('../models/user')
+var passport = require("passport");
 const {searchEngine}=require('./searchEngine/searchEngine')
 const arr=require('../conf/movies')
 //callback for get function of '/'
@@ -19,4 +21,23 @@ const getTv=function (req, res) {
 const getAddmovies=function (req, res) {
     searchEngine(arr)
 }
-module.exports={getRoot,getMovies,getTeam,getTv,getAddmovies}
+const registerform=function (req, res) {
+    res.render('register.ejs');
+}
+
+const signUp=function(req,res){
+    var newUser = new User({username: req.body.username});
+    console.log(req.body.password);
+    User.register(newUser,req.body.password,function(err,user){
+        if(err){
+            console.log(err);
+            return res.render('register.ejs');
+        } 
+        passport.authenticate("local")(req,res,function(){
+            alert("user created");
+        });
+    });
+
+}
+
+module.exports={getRoot,getMovies,getTeam,getTv,getAddmovies,registerform,signUp}
