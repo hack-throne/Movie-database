@@ -1,0 +1,35 @@
+const User=require('../models/user')
+const passport=require('passport')
+const signUp=function(req,res){
+    var newUser = new User({username: req.body.username,name:req.body.name});
+
+    User.register(newUser,req.body.password,function(err,user){
+        if(err){
+            console.log(err);
+            res.render('register.ejs');
+        }
+        else{
+            passport.authenticate("local")(req,res,function(){
+                console.log(req.body.password);
+                res.send("New user created");
+            });
+        } });
+
+}
+
+const login = function(req,res){
+    res.render('login.ejs');
+}
+const registerform=function (req, res) {
+    res.render('register.ejs');
+}
+const loginpost= function(){
+   return passport.authenticate("local",{
+
+        successRedirect:"/movies",
+        failureRedirect:"/login",
+        failureFlash:true,
+    })
+}
+
+module.exports={signUp,login,loginpost,registerform}

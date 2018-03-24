@@ -1,29 +1,12 @@
-<ul class="topnav">
 
-    <%if(adress=='home'){%>
-    <li><a class="active" href="/">Home</a></li>
-    <%}%>
-    <%if(adress!='home'){%>
-    <li><a  href="/">Home</a></li>
-    <%}%>
-    <%if(adress=='movies'){%>
-    <li><a class="active" href="/movies">Movies</a></li>
-    <%}%>
-    <%if(adress!='movies'){%>
-    <li><a  href="/movies">Movies</a></li>
-    <%}%>
-    <%if(adress=='tv'){%>
-    <li><a class="active" href="/tv">TV</a></li>
-    <%}%>
-    <%if(adress!='tv'){%>
-    <li><a  href="/tv">TV</a></li>
-    <%}%>
-    <%if(adress=='team'){%>
-    <li><a class="active" href="/team">Team</a></li>
-    <%}%>
-    <%if(adress!='team'){%>
-    <li><a  href="/team">Team</a></li>
-    <%}%>
-
-
-</ul>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>

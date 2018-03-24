@@ -1,42 +1,27 @@
 const express=require('express');
 const app=express();
-const mongoose=require('mongoose');
-
-var passport       = require("passport"),
+const mongoose=require('mongoose')
+const passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
     User           = require("./models/user"),
-    bodyParser     = require("body-parser");
-
+    bodyParser     =require('body-parser')
+const passportconf=require('./conf/passportConf');
+app.use(bodyParser.urlencoded({extended: true}));
+passportconf(passport,app,LocalStrategy,User)
 
 //required file
 const navbarRoutes=require('./routes/navbarRoutes')
+const authRoutes=require('./routes/authRoutes')
 
 
 
-
-mongoose.connect('mongodb://localhost/test15');
-app.use(bodyParser.urlencoded({extended: true}));
-
+mongoose.connect('mongodb://localhost/test12');
 app.use(express.static(__dirname+'/public'))
+
 
 //Routes
 app.use(navbarRoutes)
-
-app.use(require("express-session")({
-	secret: "The Movie Database",
-	resave: false,
-	saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-app.use(function(req, res, next){
-	res.locals.currentUser = req.user;
-	next();
-});
+app.use(authRoutes)
 
 //listening or creating server
 app.listen(3000,function () {

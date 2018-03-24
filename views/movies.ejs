@@ -1,6 +1,148 @@
-<% include partials/header.ejs %>
+<%include partials/header.ejs%>
 <%include partials/navbar.ejs%>
 
 
 
-<% include partials/footer.ejs%>
+
+<!-- Circular Rating -->
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4">
+          <div  style="width: 400px;height: 300px;">
+              <img class="movie-pic" src="<%=movie.Poster%>" style="margin-right: 20px">
+          </div>
+      </div>
+      <div class="col-lg-8">
+          <div class="row">
+              <div class="movie-heading">
+                  <strong><%=movie.Title%></strong>
+                  <br>
+                  <div class="movie-genre">
+                      Genre-<%=movie.Genre%></div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-4">
+                  <div class="progress-circle over50 p76">
+
+                      <span><%=movie.imdbRating%></span>
+                      <div class="left-half-clipper">
+
+                          <div class="first50-bar"></div>
+
+                          <div class="value-bar"></div>
+
+
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="progress-circle over50 p63">
+
+                      <span><%=movie.Runtime%></span>
+                      <div class="left-half-clipper">
+
+                          <div class="first50-bar"></div>
+
+                          <div class="value-bar"></div>
+
+                      </div>
+                  </div>
+
+              </div>
+              <div class="col-lg-4"><div class="progress-circle over50 p80">
+
+                      <span><%=movie.Year%></span>
+                      <div class="left-half-clipper">
+
+                          <div class="first50-bar"></div>
+
+                          <div class="value-bar"></div>
+
+                      </div>
+          </div>
+
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="movie-summary-heading"><div class="line-summary"></div><strong>Summary</strong><div class="line-summary2"></div>
+<div class="movie-summary">
+    <%=movie.Plot%>
+  </div>
+</div><br>
+<div class="cast-heading">
+<div class="line-summary"></div><strong>Cast</strong><div class="line-summary1"></div><br><br>
+<div class="flex-container">
+  <div><img src="/pics/3.jpg" style="width: 100%;height: 80%;">Christopher Nolan<br>as<br>Director</div>
+  <div><img src="/pics/4.jpg" style="width: 100%;height: 80%;">Leonardo DiCaprio<br>as<br>Cobb</div>
+  <div><img src="/pics/5.jpg" style="width: 100%;height: 80%;">Joseph Gordon-Levitt<br>as<br>Arthur</div>
+  <div><img src="/pics/6.jpg" style="width: 100%;height: 80%;">Ellen Page<br>as<br>Ariadne</div>
+  <div><img src="/pics/7.jpg" style="width: 100%;height: 80%;">Tom Hardy<br>as<br>Eames</div>
+  <div><img src="/pics/8.jpg" style="width: 100%;height: 80%;">Cillian Murphy<br>as<br>Robert Fischer</div>
+  <div><img src="/pics/9.jpg" style="width: 100%;height: 80%;">Marion Cotillard<br>as<br>Mal</div>
+  <div><br><br><br><br><br><br><a href="http://www.imdb.com/title/tt1375666/fullcredits?ref_=tt_cl_sm#cast">View All</a></div>
+</div>
+</div>
+<br><br><br>
+
+<div class="awards">
+<div class="line-summary"></div><strong>Awards<strong><div class="line-summary3"></div></div>
+<div class="card-container">
+  <div class="card">
+    <div class="side"><img src="/pics/10.jpg" alt="OScar" style="width:100%; height:100%; border-radius:25px;"></div>
+    <div class="side back"><br><strong>Won</strong><br><br><br>Best Achievement in Cinematography<br><br>
+Best Achievement in Sound Mixing<br><br>
+Best Achievement in Sound Editing <br><br>
+Best Achievement in Visual Effects </div>
+  </div>
+</div>
+<div class="card-container1">
+  <div class="card1">
+    <div class="side1"><img src="/pics/11.jpg" alt="Folden Globes" style="width:100%; height:100%; border-radius:25px;"></div>
+    <div class="side1 back1"><br>Nominee<br><br><br>Best Director - Motion Picture<br><br>
+Best Screenplay - Motion Picture<br><br>
+Best Original Score - Motion Picture<br><br>
+Best Motion Picture - Drama</div>
+  </div>
+</div>
+<div class="card-container2">
+  <div class="card2">
+    <div class="side2"><img src="/pics/13.jpg" alt="BAFTA" style="width:100%; height:100%; border-radius:25px;"></div>
+    <div class="side2 back2"><br>Won<br><br><br><br>Best Production Design<br><br>
+Best Sound<br><br>
+Best Special Visual Effects<br><br></div>
+  </div>
+</div>
+<div class="card-container3">
+  <div class="card3">
+    <div class="side3"><img src="../public/pics/12.jpg" alt="View All" style="width:100%; height:100%; border-radius:25px;"></div>
+    <div class="side3 back3"><br><br><br><br><br><br><br>
+<a href="http://www.imdb.com/title/tt1375666/awards?ref_=tt_awd">Here</a><br><br>
+</div>
+  </div>
+</div><br>
+<br><br><br>
+<div class="io"><br><br>
+<i class="fa fa-thumbs-o-up" aria-hidden="true">like</i>   <i class="fa fa-thumbs-o-down" aria-hidden="true">dislike</i>
+</div>
+<div class="comment-section">
+<br><br><i class="fa fa-comments-o" aria-hidden="true">Comment</i>
+<br> <br>
+<textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Type here..">
+</textarea>
+<br>
+<form action="/action_page.php" id="usrform">
+  <input type="submit">
+</form>
+</div>
+<%include partials/footer.ejs%>
+
+
+

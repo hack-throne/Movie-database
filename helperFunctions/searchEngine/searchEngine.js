@@ -37,7 +37,9 @@ const movie=require('../../models/movieModel')
      }).then((data)=>{
          Promise.all(data).then((single)=>{
             const db= single.map((second)=>{
-                return movie.create(JSON.parse(second)) //parse response & saving db
+                return movie.create(JSON.parse(second)).then(()=>{
+
+                }) //parse response & saving db
      })
 
      })
