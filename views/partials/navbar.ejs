@@ -1,8 +1,18 @@
-
 <div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="/" class=<%if(address=='/'){%>active<%}%>>Home</a>
+    <a href="/about" class=<%if(address=='/about'){%>active<%}%>>About</a>
+    <a href="/browse" class=<%if(address=='/browse'){%>active<%}%>>Browse</a>
+    <a href="/team" class=<%if(address=='/team'){%>active<%}%>>Team</a>
+    <div class="navbar-right">
+        <%if(!currentUser){%>
+        <a href="/register"><i class="fa fa-user-plus" aria-hidden="true">Sign Up</i> </a>
+        <a href="/login"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
+        <%}%>
+        <%if(currentUser){%>
+        <a href="#"><i class="fa fa-sign-in" aria-hidden="true">LogOut</i></a>
+        <%}%>
+
+    </div>
     <div class="search-container">
         <form action="/action_page.php">
             <input type="text" placeholder="Search.." name="search">

@@ -14,6 +14,10 @@ function passportconf(passport,app,LocalStrategy,User) {
         res.locals.currentUser = req.user;
         next();
     });
+    app.use(function (req, res, next) {
+        res.locals.address=req.url
+        next()
+    })
 
 }
 module.exports=passportconf

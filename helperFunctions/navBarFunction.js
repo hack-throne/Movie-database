@@ -10,15 +10,17 @@ const getMovies=function (req, res) {
     movie.find({Title:search(req.params.title)}).then((movies)=>{
         res.render('movies.ejs',{movie:movies[0]})
     })
-    //
 }
 const getTeam=function (req, res) {
     res.render('team.ejs')
 }
-const getTv=function (req, res) {
-    res.render('tv.ejs')
-}
 const getAddmovies=function (req, res) {
     searchEngine(arr)
 }
-module.exports={getRoot,getMovies,getTeam,getTv,getAddmovies}
+const getAbout=function (req, res){
+    res.render('about.ejs')
+}
+const getBrowse=function (req, res) {
+    res.render('browse.ejs')
+}
+module.exports={getRoot,getMovies,getTeam,getAddmovies,getAbout,getBrowse}
