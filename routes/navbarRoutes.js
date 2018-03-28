@@ -12,6 +12,7 @@ router.route('/team').get(getTeam)
 router.route('/about').get(getAbout)
 router.route('/browse').get(getBrowse)
 router.route('/admin/addmovies').get(getAddmovies)
+router.route('/admin/addPhoto').get()
 
 
 module.exports=router;
