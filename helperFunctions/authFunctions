@@ -32,4 +32,9 @@ const loginpost= function(){
     })
 }
 
-module.exports={signUp,login,loginpost,registerform}
+const logout=function(req,res){
+    req.logout();
+    res.redirect("/browse");
+}
+
+module.exports={signUp,login,loginpost,registerform,logout}
