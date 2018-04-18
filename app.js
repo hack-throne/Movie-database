@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+const request=require('request-promise-native')
 const mongoose=require('mongoose');
 const passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
@@ -11,10 +12,6 @@ passportconf(passport,app,LocalStrategy,User);
 //required file
 const navbarRoutes=require('./routes/navbarRoutes');
 const authRoutes=require('./routes/authRoutes');
-
-
-
-mongoose.connect('mongodb://localhost/test12');
 app.use(express.static(__dirname+'/public'));
 
 
@@ -24,6 +21,6 @@ app.use(authRoutes);
 
 
 //listening or creating server
-app.listen(3000,function () {
+app.listen(process.env.PORT||3000,function () {
     console.log('Done')
 })

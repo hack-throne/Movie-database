@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Acme|Kanit');
-
-
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
@@ -291,19 +288,19 @@ letter-spacing: 2px;}
     background-color:#f00;}
 .line-summary1{
   display:inline-block;
-  width:95%;
+   width:70%;
     height:20px;
     background-color:#f00;}
 
 .line-summary2{
   display:inline-block;
-  width:90%;
+  width:85%;
     height:20px;
     background-color:#f00;}
 
 .line-summary3{
   display:inline-block;
-  width:92.3%;
+  width:85%;
     height:20px;
     background-color:#f00;}
 
@@ -539,14 +536,13 @@ input[type=submit]:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
 }
-
 /* ========================================================Browse==================================================== */
 @import url('https://fonts.googleapis.com/css?family=Acme|Kanit');
 *{
     margin: 0;
     padding: 0;
 }
-body{
+.body{
     background: rgba(127,140,141 ,1);
 }
 .container-s{
@@ -565,7 +561,7 @@ body{
 
 
 .wrapper{
-    
+
     padding: 30px 15px;
     font-size: 2em;
     border: 5px solid rgba(52,152,219 ,1);
@@ -573,7 +569,9 @@ body{
 }
 img{
     /* margin: 0 25px; */
-    width: 100%;
+    margin-bottom: 20px;
+    width: 221px;
+    height: 370px;
 }
 .moviename-s{
     text-align: justify;
@@ -602,11 +600,11 @@ a{
     flex-wrap: wrap;
     padding: 0 50px;
     align-content: space-around;
-    
+
 }
 
 .more:hover{
     color:rgba(52,152,219 ,1);
     cursor: pointer;
 
-} 
+}

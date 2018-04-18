@@ -5,7 +5,7 @@ const {getRoot,getMovies,getBrowse,getTeam,getAbout,getAddmovies}=require('../he
 //root page
 router.route('/').get(getRoot)
 //movies page
-router.route('/movies/:title').get(getMovies)
+router.route('/movies/:id').get(getMovies)
 //team page
 router.route('/team').get(getTeam)
 //about page

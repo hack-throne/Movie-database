@@ -1,22 +1,17 @@
-const movie=require('../models/movieModel')
+const {getFull,getTrendingGenre}=require('imdb-scrapper')
 const {searchEngine,searchImage}=require('./searchEngine/searchEngine')
+const request=require('request-promise-native');
 const search=require('./search')
+const movie=require('../models/movieModel')
 const arr=require('../conf/movies')
 //callback for get function of '/'
 const getRoot=function (req, res) {
     res.render('index.ejs')
 }
 const getMovies=function (req, res) {
-    movie.find({Title:search(req.params.title)}).then((movies)=>{
-        Promise.all(movies[0].Actors[0].split(",").map((data)=>{
-            return searchImage(data)
-        })).then((data)=>{
-            res.json(data.map((actor)=>{
-                return 'https:'+actor
-            }))
-        })
 
-    })
+            getFull(req.params.id).then((data)=>{res.render('movies.ejs',{movie:data});
+            })
 }
 const getTeam=function (req, res) {
     res.render('team.ejs')
@@ -28,7 +23,39 @@ const getAbout=function (req, res){
     res.render('about.ejs')
 }
 const getBrowse=function (req, res) {
-    res.render('browse.ejs')
-}
+    let scrap=[];
+    const genre=['action','comedy','fiction','romantic','thriller']
+    let movies=genre.map((one)=>{
+        return getTrendingGenre(one,8)
+    })
+    Promise.all(movies).then((value)=>{
+        scrap=value;
+       let movies=[];
+       movies= movies.concat(...value);
+       movies=movies.map((each)=>{
+           return each.trending
+       })
+        movies=[].concat(...movies);
+      console.log(movies.length)
+       let result= movies.map((key)=>{
+            return request.get(`https://www.omdbapi.com/?i=${key.id}&apikey=1799f783`)
+        })
+        return Promise.all(result).then((data)=>{
+            console.log(data.length)
+            let ob={};
+            data.forEach((pic)=>{
+                pic=JSON.parse(pic);
+               // console.log(ob);
+                ob[pic.imdbID]=pic.Poster
+            });
+            console.log(Object.keys(ob).length)
+            return ob
+        })
+
+    }).then((value)=>{
+        res.render('browse.ejs',{images:value,movies:scrap});
+    })
+
+};
 
 module.exports={getRoot,getMovies,getTeam,getAddmovies,getAbout,getBrowse}
