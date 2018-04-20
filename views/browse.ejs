@@ -13,7 +13,7 @@
         </div>
         <div class="movies-s">
             <%movies[i].trending.forEach((movie)=>{%>
-            <a href="<%=`/movies/${movie.id}`%>"> <span class="image-s"><img src=<%=images[movie.id]%> alt="" ><a href="#" class="moviename-s"><%=movie.title%></a></span></a>
+            <a href="<%=`/movies/${movie.id}`%>"> <span class="image-s"><img src=<%=movie.poster%> alt="<%=movie.name%>"  style="height: 350px;width: 220px ;margin-bottom: 20px;"><a href="#" class="moviename-s"><%=movie.title%></a></span></a>
 
             <%})%>
 
